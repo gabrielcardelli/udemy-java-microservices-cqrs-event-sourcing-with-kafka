@@ -12,6 +12,21 @@
 		<java.version>16</java.version>
 	</properties>
 
+<dependencies>
+	<dependency>
+			<groupId>com.techbank</groupId>
+			<artifactId>cqrs.core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+		</dependency>
+</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
