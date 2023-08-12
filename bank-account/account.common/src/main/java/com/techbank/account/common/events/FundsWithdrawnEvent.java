@@ -10,6 +10,13 @@ import lombok.experimental.SuperBuilder;
 @Data
 public class FundsWithdrawnEvent  extends BaseEvent{
 		
+	
+	
+	public FundsWithdrawnEvent(String id, double amount) {
+		super(id);
+		this.amount = amount;
+	}
+
 	private double amount;
 
 }

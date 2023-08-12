@@ -15,4 +15,13 @@ public class AccountOpenedEvent extends BaseEvent {
 
 	private Date createdDate;
 	private double openingBalance;
+	public AccountOpenedEvent(String id, String accountHolder, AccountType accountType, Date createdDate, double openingBalance) {
+		super(id);
+		this.accountHolder = accountHolder;
+		this.accountType = accountType;
+		this.createdDate = createdDate;
+		this.openingBalance = openingBalance;
+	}
+	
+	
 }

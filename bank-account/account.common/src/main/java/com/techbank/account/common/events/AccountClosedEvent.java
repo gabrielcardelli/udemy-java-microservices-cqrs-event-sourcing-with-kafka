@@ -9,5 +9,9 @@ import lombok.Data;
 
 @Data
 public class AccountClosedEvent extends BaseEvent {
+	
+	public AccountClosedEvent(String id){
+		super(id);
+	}
 
 }
