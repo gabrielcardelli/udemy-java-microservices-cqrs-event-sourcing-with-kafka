@@ -9,11 +9,17 @@ import com.techbank.account.common.events.FundsDepositEvent;
 import com.techbank.account.common.events.FundsWithdrawnEvent;
 import com.techbank.cqrs.core.domain.AggregateRoot;
 
+import lombok.Getter;
+
 public class AccountAggregate  extends AggregateRoot{
 
 	private Boolean active;
 	
+	@Getter
 	private double balance;
+	
+	public AccountAggregate() {
+	}
 	
 	public AccountAggregate(OpenAccountCommand command) {
 		raiseEvent(new AccountOpenedEvent(command.getId(),command.getAccountHolder(),command.getAccountType(),new Date(),command.getOpeningBalance()));
