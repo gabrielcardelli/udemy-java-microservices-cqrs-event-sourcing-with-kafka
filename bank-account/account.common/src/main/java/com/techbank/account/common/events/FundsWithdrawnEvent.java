@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
+@NoArgsConstructor
 public class FundsWithdrawnEvent  extends BaseEvent{
 		
 	
