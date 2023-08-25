@@ -15,7 +15,7 @@ public class AccountEventProducer implements EventProducer{
 	
 	@Override
 	public void produce(String topicName, BaseEvent baseEvent) {
-		kafkaTemplate.send(topicName,baseEvent);		
+ 		kafkaTemplate.send(topicName,baseEvent);		
 	}
 
 }

@@ -29,6 +29,6 @@ public class BankAccount extends BaseEntity {
 	
 	private AccountType accountType;
 	
-	private double balanace;
+	private double balance;
 	
 }
