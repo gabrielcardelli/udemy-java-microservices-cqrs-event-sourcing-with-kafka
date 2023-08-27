@@ -9,5 +9,7 @@ public interface CommandHandler {
 	void handle(WithdrawFundsCommand command);
 	
 	void handle(CloseAccountCommand command);
+	
+	void handle(RestoreReadDbCommand command);
 
 }

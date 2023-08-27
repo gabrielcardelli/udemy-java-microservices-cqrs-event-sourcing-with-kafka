@@ -13,6 +13,7 @@ import lombok.Getter;
 
 public class AccountAggregate  extends AggregateRoot{
 
+	@Getter
 	private Boolean active;
 	
 	@Getter

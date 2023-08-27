@@ -12,10 +12,16 @@ import com.techbank.cqrs.core.domain.AggregateRoot;
 import com.techbank.cqrs.core.events.BaseEvent;
 import com.techbank.cqrs.core.handlers.EventSourcingHandler;
 import com.techbank.cqrs.core.infrastructure.EventStore;
+import com.techbank.cqrs.core.producers.EventProducer;
+
+import lombok.experimental.var;
 
 @Service
 public class AccountEventSourcingHandler implements EventSourcingHandler<AccountAggregate> {
 
+	@Autowired
+	EventProducer eventProducer;
+	
 	@Autowired
 	private EventStore eventStore;
 	
@@ -41,6 +47,23 @@ public class AccountEventSourcingHandler implements EventSourcingHandler<Account
 
 		return aggregate;
 		
+	}
+
+	@Override
+	public void republishEvents() {
+		var aggregateIds = eventStore.getAggregateIds();
+		
+		for(var aggregateId : aggregateIds) {
+			var aggregate =  getById(aggregateId);
+			if(aggregate == null || !aggregate.getActive()) {
+				continue;
+			}else {
+				var events = eventStore.getEvents(aggregateId);
+				for(var event : events) {
+					eventProducer.produce(event.getClass().getSimpleName(),event);
+				}
+			}
+		}
 	}
 
 }
